@@ -9,7 +9,7 @@ This project focuses on detecting and mitigating Denial of Service (DoS) and Dis
 - Automated logging and reporting for forensic analysis.
 - High scalability and adaptability for different network configurations.
 
-Installation
+## Installation
 
 1. Clone the repository:
     ```bash
@@ -27,12 +27,73 @@ Installation
     python src/ddos_detector.py --cooldown 60
     ```
 
-Usage
+## Usage
 
 - Modify thresholds and cooldown parameters in `ddos_detector.py` as needed.
 - Use `examples/run_example.sh` to see a demonstration.
 - Refer to `docs/report.pdf` for detailed documentation.
 
-Contribution
+---
+
+## Lab Simulation Setup
+
+This project simulates a real-world DoS/DDoS attack using two machines:
+
+- **Linux** as the attacker (Slowloris tool)
+- **Windows** as the target (Local HTTP server + Detection script)
+
+### 🖥️ Windows (Target Machine)
+
+1. **Start a Local Web Server**:
+    ```bash
+    python -m http.server 8080
+    ```
+
+2. **Update Detection Script Port**:
+    Open `ddos_detector.py` and ensure:
+    ```python
+    TARGET_PORT = 8080
+    ```
+
+3. **Run the Detection Script**:
+    ```bash
+    python src/ddos_detector.py
+    ```
+
+### 🐧 Linux (Attacking Machine)
+
+1. **Install Slowloris**:
+    ```bash
+    git clone https://github.com/gkbrk/slowloris.git
+    cd slowloris
+    ```
+
+2. **Launch the Attack**:
+    ```bash
+    slowloris <target ip> -p <port> -s <number> -v
+    ```
+
+> ⚠️ Replace `<windows-ip>` with the actual IP address of the Windows machine.
+
+###  Demo Screenshots
+
+
+**1. Slowloris Attack from Linux:**
+
+![Slowloris Attack](images/slowloris.jpg)
+
+**3. Python Detection Output:**
+
+![Detection Output](images/detection_output1.jpg)
+![Detection Output](images/detection_output2.jpg)
+
+
+
+
+
+
+---
+
+## Contribution
 
 Feel free to open issues or contribute by submitting pull requests. Ensure all code changes are tested.
