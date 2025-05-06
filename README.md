@@ -13,7 +13,7 @@ Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/<username>/dos-ddos-detection.git
+    git clone https://github.com/unablefinduser/Dos-DDos-detection-and-mitigation
     cd dos-ddos-detection
     ```
 
